@@ -174,3 +174,4 @@ for i in range(n):
     else:
         print('не найдено')
 
+#ioi
