@@ -118,5 +118,5 @@ for i in range(len(listt)):
     for _ in range(q):
         neww.append(listt[i])
 print(*neww)
-
+#heyy
 
