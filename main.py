@@ -119,4 +119,4 @@ for i in range(len(listt)):
         neww.append(listt[i])
 print(*neww)
 #heyy
-
+#neww
