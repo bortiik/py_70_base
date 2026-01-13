@@ -118,7 +118,59 @@ for i in range(len(listt)):
     for _ in range(q):
         neww.append(listt[i])
 print(*neww)
-#heyy
-#neww
-#vot tak
-#fgh
+
+#task 11
+
+school = {
+    '9a': 15,
+    '9b': 17,
+    '9v': 22,
+    '10a': 21,
+    '10b': 18,
+    '10v': 15,
+    '11a': 20,
+    '11b': 19,
+    '11v': 18
+}
+
+school['9v'] = 20        # обновляем количество учеников в 9v
+school['9d'] = 15        # добавляем новый класс 9d
+del school['9v']         # удаляем класс 9v
+
+pup = 0
+for val in school:
+    pup += school[val]
+
+print(pup)               # выводим общее количество учеников (через цикл)
+print(sum(school.values()))  # выводим то же самое через встроенную функцию
+
+#task 12
+
+sett = set([i for i in range(1, int(input('загадайте максимальное число')) + 1)])
+n = int(input('Август загадывает число'))
+while len(sett) != 1:
+    bea = set(int(i) for i in input('Беатрис вводит числа через пробел').split())
+    if n in bea:
+        sett &= bea
+        print(*sett, '- возможные числа')
+    else:
+        sett -= bea
+        print(*sett, '- возможные числа')
+else:
+    print(f'вы угадали, число загаданное Августом {n}')
+
+
+#task 13
+
+sleng = {}
+text = [i.split(':') for i in input().lower().split('.')[:-1]]
+for txt in text:
+    sleng[txt[0].strip()] = txt[1]
+n = int(input('введите количество слов'))
+for i in range(n):
+    word = input('введите слово').lower().strip()
+    if word in sleng.keys():
+        print(sleng[word])
+    else:
+        print('не найдено')
+
