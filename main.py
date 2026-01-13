@@ -120,3 +120,4 @@ for i in range(len(listt)):
 print(*neww)
 #heyy
 #neww
+#vot tak
