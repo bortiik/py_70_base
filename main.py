@@ -174,4 +174,92 @@ for i in range(n):
     else:
         print('не найдено')
 
-#ioi
+#less 8
+
+
+try:
+    x = (1, 2, 5, 7)
+    x = x / 2
+except Exception as e:
+    print(e)
+
+#task 2
+
+try:
+    x = [1, 2, 5, 7]
+    x[5] = 6
+except IndexError:
+    pass
+
+a, b, c = map(int, input('введите a b c через пробел').split())
+try:
+    if a = 0 or b == 0 or c == 0:
+        raise ArithmeticError("одна из сторон равна 0")
+    else:
+        p = (a + b + c) / 2
+        s = (p(p-a)(p-b)(p-c))**0.5
+        print(s)
+except ArithmeticError as e:
+    print(e)
+except Exception:
+    pass
+
+#task 5
+
+dictionary = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+try:
+    try_key = input("введите ключ удаляемого элемента")
+    if try_key not in dictionary:
+        raise KeyError('данного ключа нет в хеш таблице') #используем raise тк в условии написано бросить исключение
+    else:
+        print(dictionary[try_key])
+except KeyError as e:
+    print(e)
+except Exception:
+    pass
+
+#task 4
+
+listik = [1, 3, 6, 7, 9, 0]
+index_try = int(input())
+try:
+    if len(listik) - 1 < index_try:
+        raise TypeError('index out of range')
+    else:
+        del listik[index_try]
+except TypeError as e:
+    print(e)
+except Exception:
+    pass
+
+#task 6
+summ_list = input().split()
+summ = 0
+for num in summ_list:
+    try:
+        summ += int(num)
+    except Exception:
+        pass
+print(summ)
+
+#task 7
+
+dictik = {}
+try:
+    stroka = input().split()
+    ''.join(stroka)
+    for sumb in stroka:
+        try:
+            int(sumb)
+        except ValueError:
+            if sumb in dictik.keys():
+                dictik[sumb] += 1
+            else:
+                dictik[sumb] = 1
+except ValueError:
+    print(TypeError)
+finally:
+    print(dictik)
+
+
+
