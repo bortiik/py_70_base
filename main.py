@@ -174,3 +174,311 @@ for i in range(n):
     else:
         print('не найдено')
 
+#less 8
+
+
+try:
+    x = (1, 2, 5, 7)
+    x = x / 2
+except Exception as e:
+    print(e)
+
+#task 2
+
+try:
+    x = [1, 2, 5, 7]
+    x[5] = 6
+except IndexError:
+    pass
+
+a, b, c = map(int, input('введите a b c через пробел').split())
+try:
+    if a = 0 or b == 0 or c == 0:
+        raise ArithmeticError("одна из сторон равна 0")
+    else:
+        p = (a + b + c) / 2
+        s = (p(p-a)(p-b)(p-c))**0.5
+        print(s)
+except ArithmeticError as e:
+    print(e)
+except Exception:
+    pass
+
+#task 5
+
+dictionary = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+try:
+    try_key = input("введите ключ удаляемого элемента")
+    if try_key not in dictionary:
+        raise KeyError('данного ключа нет в хеш таблице') #используем raise тк в условии написано бросить исключение
+    else:
+        print(dictionary[try_key])
+except KeyError as e:
+    print(e)
+except Exception:
+    pass
+
+#task 4
+
+listik = [1, 3, 6, 7, 9, 0]
+index_try = int(input())
+try:
+    if len(listik) - 1 < index_try:
+        raise TypeError('index out of range')
+    else:
+        del listik[index_try]
+except TypeError as e:
+    print(e)
+except Exception:
+    pass
+
+#task 6
+summ_list = input().split()
+summ = 0
+for num in summ_list:
+    try:
+        summ += int(num)
+    except Exception:
+        pass
+print(summ)
+
+#task 7
+
+dictik = {}
+try:
+    stroka = input().split()
+    ''.join(stroka)
+    for sumb in stroka:
+        try:
+            int(sumb)
+        except ValueError:
+            if sumb in dictik.keys():
+                dictik[sumb] += 1
+            else:
+                dictik[sumb] = 1
+except ValueError:
+    print(TypeError)
+finally:
+    print(dictik)
+
+#lesson 9 task 1
+
+def minimal_num(a,b):
+    return min(a,b)
+
+q, w , c, d = [1,2,3,4]
+
+print(minimal_num((minimal_num(q,w)), minimal_num(c,d)))
+
+#task 2
+
+def ideal_num(num):
+    finall = sum([i for i in range(1, int(num / 2) + 1) if num % i == 0])
+    if finall == num:
+        print('YES')
+    else:
+        print('NO')
+
+ideal_num(int(input()))
+
+#task 3
+
+
+def fib(n):
+    a, b = 0, 1
+    for i in range(n):
+        a, b = b, a + b
+    return a
+print(fib(int(input())))
+
+#task 4
+
+def closest_mode(num):
+    if num % 5 ==0:
+        return num
+    else:
+        return num + (5 - num % 5)
+
+print(closest_mode(5))
+
+#task 5
+
+def check_variable():
+    variable = input()
+    while variable != 'поработали, и хватит':
+        flag = True
+        if not variable[0].isalpha():
+            flag = False
+        for i in variable:
+            if not (i.isalpha() or i.isdigit() or i == '_'):
+                flag = False
+        if flag:
+            print('можно использовать')
+        else:
+            print('нельзя использовать')
+        print('для завершения работы наберите "поработали, и хватит"')
+        flag = True
+        variable = input()
+
+check_variable()
+
+#task 6
+def generator():
+    return [i for i in range(10, 100) if i % 2 == 1]
+
+print(generator())
+
+#task 7
+
+lisst = [i for i in range(100, 1000) if i % 3 == 0 and i % 5 == 0]
+print(lisst)
+
+#task 8
+listik = [1, 1, 5, 6, 8, 8, 8, 9, 9, 11, 87, 87]
+def diferet_el(listik):
+    count = sum([1 for i in range(len(listik)-1) if listik[i] != listik[i+1]])
+    return count
+print(diferet_el(listik))
+
+#task 9
+
+listt = list(map(int, input().split()))
+if len(listt) == 1:
+    print(listt)
+else:
+    listt = [listt[-1]] + listt + [listt[0]]
+    new_lisst = [listt[i - 1] + listt[i+1] for i in range(1, len(listt)-1)]
+    print(new_lisst)
+
+#task 10
+
+listt = ['aa', 'b', 'fgc', 'd', 'ehg', 'rtyui', 'd']
+listt.sort(key=len, reverse=True)
+print(listt)
+
+#task 11
+
+listt = ['aa', 'b', 'fgc', 'd', 'ehg', 'rtyui', 'd', 'a']
+listt.sort(key=lambda x: x.count('a'))
+print(listt)
+
+#lesson 9
+
+def log_result(fun):
+    def wrapper(num):
+        result = fun(num)
+        print(result)
+        return result
+    return wrapper
+
+
+def square(number: int) -> int:
+    return number ** 2
+
+square = log_result(square)
+square(10)
+
+#task 2
+
+def repeat(fun):
+    def wrapper(num, x):
+        for i in range(num):
+            x = fun(x)
+        print(x)
+        return x
+    return wrapper
+def square(number: int) -> int:
+    return number ** 2
+
+square = repeat(square)
+
+square(10, 10)
+
+#task 3
+
+def arithmetic(a, b):
+    return a / b
+
+def error_catch(fun):
+    def wrapper(num_1: int, num_2: int):
+        try:
+            result = fun(num_1, num_2)
+            return result
+        except Exception as e:
+            print(f'случилась ошибка - {e}')
+    return wrapper
+
+arithmetic = error_catch(arithmetic)
+print(arithmetic(1, 0))
+
+#task 4
+
+listik = ['ghjgkl', 'kgi', 'f', 'girfbwcdf', 'gfki']
+new_listik = [len(i) for i in listik]
+print(new_listik)
+
+#task 5
+
+listik = ['apple', 'Banana', 'cherry', 'DATE']
+new_listik = [i for i in listik if i.islower()]
+print(new_listik)
+
+#task 6
+
+listik = [
+    ('Алиса', 23),
+    ('Максим', 37),
+    ('София', 15),
+    ('Артём', 29),
+    ('Ева', 31),
+    ('Михаил', 18),
+    ('Анна', 40),
+    ('Даниил', 12),
+    ('Мария', 25),
+    ('Иван', 34),
+]
+
+new_listik = [i for i in listik if i[1] > 18]
+print(new_listik)
+
+
+#task 7
+
+from functools import reduce
+listik = [[1,2], [3,4], [5,6]]
+new = reduce(lambda x, y: x + y, listik)
+print(new)
+
+#task 8
+
+listik = ['mouse', 'dog', 'cat', 'car', 'snake', 'cow']
+dictik = {}
+dictik = {i[0]: [i] for i in listik}
+new_dictik = {dictik[i[0]].append(i) for i in listik if i not in dictik[i[0]]}
+print(dictik)
+
+#task 9
+
+inventory = [
+    ("яблоки", 85.00, 50),
+    ("бананы", 120.50, 30),
+    ("молоко", 75.90, 25),
+    ("хлеб", 45.00, 40),
+    ("яйца", 140.00, 20),
+    ("сыр", 320.00, 15),
+    ("вода", 30.00, 100),
+    ("кофе", 550.00, 8),
+    ("печенье", 95.50, 35),
+    ("рис", 180.00, 12)
+]
+
+sum_list = [['цена на ' + i[0], i[1] * i[2]] for i in inventory]
+print(sum_list)
+
+
+
+
+
+
+
+
