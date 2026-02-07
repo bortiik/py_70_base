@@ -476,9 +476,105 @@ sum_list = [['цена на ' + i[0], i[1] * i[2]] for i in inventory]
 print(sum_list)
 
 
+#task classes
+#task 1
+
+class SomeOperations():
+    def __init__(self, a: int, b: int) -> None:
+        self._a = a
+        self._b = b
+    @property
+    def a(self):
+        return self._a
+
+    @a.setter
+    def a(self, a):
+        self._a = a
+
+    def some_summ(self):
+        return self._a + self._b
+
+    def maximum(self):
+        return max(self._a, self._b)
+
+operatonship = SomeOperations(5, 7)
+operatonship.a = 8
+print(operatonship.some_summ())
+
+#task 2
+
+class Counter:
+    def __init__(self, count = 0):
+        self.count = count
+
+    @property
+    def coount(self):
+        return self.count
+
+    def add(self):
+        self.count += 1
+
+    def subtract(self):
+        self.count -= 1
+
+new_counter = Counter(10)
+new_counter.add()
+print(new_counter.count)
 
 
+#task_3
 
+class Shop:
+    def __init__(self, **kwargs):
+        self.products_dict = kwargs
+
+    def info(self):
+        print(self.products_dict)
+
+    def add_product(self, **product):
+        self.products_dict.update(product)
+
+    def products_dict_coast(self, keyy):
+        print(f'цена на {keyy} составляет {self.products_dict[keyy]}')
+
+    def delete_product(self, keyy):
+        del self.products_dict[keyy]
+
+product_shop = Shop(**{'banana':3.5, 'apple':2, 'milk':3})
+product_shop.add_product(**{'bananna':4})
+product_shop.info()
+
+
+#task 4
+
+
+class MoneyBox:
+    def __init__(self, capacity):
+        self.__capacity = capacity
+        self._coin_count = 0
+
+    @property
+    def coin_count(self):
+        return self._coin_count
+
+    @coin_count.setter
+    def coin_count(self):
+        print("you can't")
+
+    @coin_count.deleter
+    def coin_count(self):
+        print(f'u broke money box and take {self._coin_count} rubles')
+
+    def add_coin(self):
+        if self._coin_count < __capacity:
+            self._coin_count += 1
+
+    def empty_space(self):
+        print(f'u can add {self._coin_count} coins')
+
+pig_money_box = MoneyBox(5)
+pig_money_box.add_coin()
+pig_money_box.empty_space()
 
 
 
